@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1535951798 source:f:\akshay\task1(3-9)\startkey.c
+	<stdio.h>
+	<string.h>
+	"startk.h"
+
+1535947059 source:f:\akshay\task1(3-9)\countlen.c
+	<stdio.h>
+	"startk.h"
+
+1535951771 f:\akshay\task1(3-9)\startk.h
+	<stdio.h>
+
+1535947059 source:f:\akshay\task1(3-9)\display.c
+	<stdio.h>
+	"startk.h"
+
+1535951771 source:f:\akshay\task1(3-9)\initi.c
+	<stdio.h>
+	"startk.h"
+
