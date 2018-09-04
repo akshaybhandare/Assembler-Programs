@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1534737128 source:f:\akshay\task4\display.c
+	<stdio.h>
+	"task4.h"
+
+1535341780 f:\akshay\task4\task4.h
+	<stdio.h>
+
+1535341780 source:f:\akshay\task4\cpyfirst.c
+	<stdio.h>
+	<stdlib.h>
+	"task4.h"
+	<string.h>
+
+1535341780 source:f:\akshay\task4\findlarline.c
+	<stdio.h>
+	"task4.h"
+	<string.h>
+

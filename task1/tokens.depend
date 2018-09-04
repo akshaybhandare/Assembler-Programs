@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1534134774 source:f:\akshay\tokens\tokenwords.c
+	<stdio.h>
+	<stdlib.h>
+

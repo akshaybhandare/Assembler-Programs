@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1534132252 source:f:\akshay\tokenfile\isnum.c
+	<stdio.h>
+	"th.h"
+
+1534132252 f:\akshay\tokenfile\th.h
+	<stdio.h>
+
+1534132624 source:f:\akshay\tokenfile\mainpro.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"th.h"
+

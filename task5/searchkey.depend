@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1535343341 source:f:\akshay\searchkey\display.c
+	<stdio.h>
+	"search.h"
+
+1535342844 f:\akshay\searchkey\search.h
+	<stdio.h>
+
+1535344583 source:f:\akshay\searchkey\countlen.c
+	<stdio.h>
+	"search.h"
+
+1535344634 source:f:\akshay\searchkey\mainsearch.c
+	<stdio.h>
+	"search.h"
+
+1535343783 source:f:\akshay\searchkey\comp.c
+	<stdio.h>
+	<string.h>
+	"search.h"
+

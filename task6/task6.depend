@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1535944980 source:f:\akshay\task6\mainsearch.c
+	<stdio.h>
+	"search.h"
+
+1535942978 source:f:\akshay\task6\display.c
+	<stdio.h>
+	"search.h"
+
+1535944413 source:f:\akshay\task6\countlen.c
+	<stdio.h>
+	"search.h"
+
+1535944063 source:f:\akshay\task6\comp.c
+	<stdio.h>
+	<string.h>
+	"search.h"
+

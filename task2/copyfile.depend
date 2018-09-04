@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1534136275 source:f:\akshay\copyfile\display.c
+	<stdio.h>
+	"cpy.h"
+
+1534135739 f:\akshay\copyfile\cpy.h
+	<stdio.h>
+
+1534734169 source:f:\akshay\copyfile\filecpym.c
+	<stdio.h>
+	<stdlib.h>
+	"cpy.h"
+
+1534136275 source:f:\akshayyb\task2\display.c
+	<stdio.h>
+	"cpy.h"
+
+1534135739 f:\akshayyb\task2\cpy.h
+	<stdio.h>
+
+1534734169 source:f:\akshayyb\task2\filecpym.c
+	<stdio.h>
+	<stdlib.h>
+	"cpy.h"
+
