@@ -6,10 +6,11 @@ main()
     FILE *ff,*tf;
     char sf[30]="in.txt",tar[30];
     char ch;
-    int LOCCTR;
+    char LOCCTR[20];
     int len,res=-1,temp;
     char str[10]="START";
-
+    char quostr[20],dummy1[10],dummy2[10];
+    int quoint;
     /* long decimalnum=4096, quotient, remainder;
     int i, j = 0;
     char hexadecimalNumber[100];*/
@@ -46,16 +47,25 @@ main()
          //fprintf(tf, "%s\n", col2);
          }
          else{
-          sscanf(buf, "%s\t%s", col1, col2);
+          sscanf(buf, "%s\t%s\t%s", col1, col2,quostr);
+         // sscanf(buf, "%s\t%s\t%d", dummy1, dummy2,quoint);
+
         //  printf("%s\n",col2);
           res=strcmp(str,col2);
           if(res==0){
 
-             quotient = decimalnum;
+                quoint = contoint(quostr);
+             printf("\nhere in str: %s",quostr);
+             printf("\nhere in int : %d",quoint);
+            // quotient = decimalnum;
+
+           // strcat("0x",quostr);
+
+            strcpy(LOCCTR,quostr);
+            printf("\nhere in LOCCTR: %s\n",LOCCTR);
 
 
-
-           initial(tar,quotient);
+            initial(tar,quoint);
           }
 
 
