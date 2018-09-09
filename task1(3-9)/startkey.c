@@ -55,14 +55,14 @@ main()
           if(res==0){
 
                 quoint = contoint(quostr);
-             printf("\nhere in str: %s",quostr);
-             printf("\nhere in int : %d",quoint);
+            // printf("\nhere in str: %s",quostr);
+             printf("\nReturned value of addr(int) : %d",quoint);
             // quotient = decimalnum;
 
            // strcat("0x",quostr);
 
             strcpy(LOCCTR,quostr);
-            printf("\nhere in LOCCTR: %s\n",LOCCTR);
+            printf("\n LOCCTR value(string): %s\n\n",LOCCTR);
 
 
             initial(tar,quoint);
