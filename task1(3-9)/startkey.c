@@ -6,7 +6,7 @@ main()
     FILE *ff,*tf;
     char sf[30]="in.txt",tar[30];
     char ch;
-    char LOCCTR[20];
+    int LOCCTR;
     int len,res=-1,temp;
     char str[10]="START";
     char quostr[20],dummy1[10],dummy2[10];
@@ -61,8 +61,9 @@ main()
 
            // strcat("0x",quostr);
 
-            strcpy(LOCCTR,quostr);
-            printf("\n LOCCTR value(string): %s\n\n",LOCCTR);
+            //strcpy(LOCCTR,quostr);
+             LOCCTR = quoint;
+            printf("\n LOCCTR value: %d\n\n",LOCCTR);
 
 
             initial(tar,quoint);
