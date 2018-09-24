@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1537758591 source:c:\users\a1.cselab4-31\desktop\033\pass1\pass1main.c
+	<stdio.h>
+	"pass1.h"
+	<string.h>
+
+1537758657 c:\users\a1.cselab4-31\desktop\033\pass1\pass1.h
+	<stdio.h>
+
