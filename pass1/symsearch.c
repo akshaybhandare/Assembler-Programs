@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include"pass1.h"
 
-int opsearch(char tar[],char labeltosch[])
+int symsearch(char tar[],char labeltosch[])
 {
 
 
@@ -14,7 +14,6 @@ int opsearch(char tar[],char labeltosch[])
     printf("I couldn't open.\n");
     exit(0);
     }
-    len=countlen(sf);
     while ((ch=fgetc(ff))!=EOF)
      {
          char  buf[100],col1[100], col2[100];
@@ -22,26 +21,23 @@ int opsearch(char tar[],char labeltosch[])
          if ( fgets(buf, sizeof(buf), ff) == 0 )
             break;
 
-           //strcpy(buf1,buf);
-            if(strlen(buf)<len){
-         //sscanf(buf, "%s", col1);
-         //fprintf(tf, "%s\n", col1);
-            }
-         else{
             sscanf(buf, "%s\t%s", col1, col2);
-           res=strcmp(str,col2);
+           res=strcmp(labeltosch,col1);
            if(res==0)
            {
-                printf("String: %s is found\n",str);
+                printf("String: %s is found\n",labeltosch);
                 res1=0;
                 return(1);
            }
-         }
 
      }
     if(res1==-2)
     {
-        printf("String: %s was not found\n",str);
+        if(strcmp(labeltosch,"WORD")==0 ||strcmp(labeltosch,"BYTE")==0 ||strcmp(labeltosch,"RESW")==0 ||strcmp(labeltosch,"RESB")==0 ){
+                    printf("String: %s may be a assembler directive\n",labeltosch);
+                    return(1);
+                }
+        printf("String: %s was not found in symtab\n",labeltosch);
         return(0);
     }
     fclose(ff);

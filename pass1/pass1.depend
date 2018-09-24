@@ -7,3 +7,36 @@
 1537758657 c:\users\a1.cselab4-31\desktop\033\pass1\pass1.h
 	<stdio.h>
 
+1537758883 source:g:\akshayyb - copy\pass1\contoint.c
+	<stdio.h>
+	"pass1.h"
+
+1537803923 g:\akshayyb - copy\pass1\pass1.h
+	<stdio.h>
+
+1537758754 source:g:\akshayyb - copy\pass1\countlen.c
+	<stdio.h>
+	"pass1.h"
+
+1537759680 source:g:\akshayyb - copy\pass1\initi.c
+	<stdio.h>
+	"pass1.h"
+
+1537813358 source:g:\akshayyb - copy\pass1\symsearch.c
+	<stdio.h>
+	"pass1.h"
+
+1537811059 source:g:\akshayyb - copy\pass1\opsearch.c
+	<stdio.h>
+	"pass1.h"
+
+1537814017 source:g:\akshayyb - copy\pass1\pass1main.c
+	<stdio.h>
+	"pass1.h"
+	<string.h>
+	<stdlib.h>
+
+1537804021 source:g:\akshayyb - copy\pass1\display.c
+	<stdio.h>
+	"pass1.h"
+

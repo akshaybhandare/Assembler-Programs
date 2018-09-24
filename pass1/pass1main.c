@@ -1,23 +1,25 @@
 #include<stdio.h>
 #include"pass1.h"
 #include<string.h>
+#include<stdlib.h>
 
 main()
 {
-    FILE *ff,*tf;
+    FILE *ff,*tf,*op,*sym;
     char sf[30]="copy.txt",tar[30];
     char ops[30]="optab.txt";
      char syms[30]="symtab.txt";
     char ch;
     int LOCCTR;
+    char label[50],opcd[50],oprd[50];
     int len,res=-1,temp;
     char str[10]="START";
-    char quostr[20],dummy1[10],dummy2[10];
-    int quoint;
-    int startaddr;
+    char quostr[20];
+    int quoint,programlen;
+    int startaddr,res11,res12,errflag=0,a,inint,len11;
 
     op=fopen(ops,"r");
-    sym=fopen(syms,"a+");
+    sym=fopen(syms,"w");
     ff=fopen(sf,"r");
     if (ff == NULL)
     {
@@ -34,180 +36,78 @@ main()
 
     len=countlen(sf);
 
+    //findung locctr
+    //if length is small
+     printf("\nFINDING LOCCTR..\n");
+    fscanf(ff,"%s\t%s\t%s",label,opcd,oprd);//reading first line
+    if((strcmp(opcd,str))==0){
+        quoint = contoint(oprd);
+        printf("\nINITIALIZING LOCCTR..\n");
+        LOCCTR = quoint;
+        startaddr=LOCCTR;
+        printf("\n LOCCTR value: %d\n\n",LOCCTR);
+    }
+    else{
+            LOCCTR = 0;
+             startaddr=LOCCTR;
+             printf("\n LOCCTR value: %d\n\n",LOCCTR);
+            //fputc(c,ta);
 
-        /**********/
-        /*char  buf[100],col1[100], col2[100];
-        if ( fgets(buf, sizeof(buf), ff) == 0 )
-            break;*/
-        /***********/
+        }
+       //reading second line
+       fscanf(ff,"%s\t%s\t%s",label,opcd,oprd);
+       printf("%s\t%s\t%s",label,opcd,oprd);
 
-    while ((ch=fgetc(ff))!=EOF)
+
+    fprintf(tf, "\n%d\t", LOCCTR);
+    while (strcmp(opcd,"END")!=0 && (ch=fgetc(ff))!=EOF)
      {
-         char  buf[100],col1[100], col2[100];
 
-         if ( fgets(buf, sizeof(buf), ff) == 0 )
-            break;
-
-           strcpy(buf1,buf);
-
-           /********/
-        if(strlen(buf)<len){
-                sscanf(buf, "%s\t%s", col1,col2);
-                 printf("\nFINDING LOCCTR..\n");
-              res=strcmp(str,col2);
-          if(res==0){
-
-                quoint = contoint(col3);
-                printf("\nReturned value of addr(int) : %d",quoint);
-                printf("\nINITIALIZING LOCCTR..\n");
-                LOCCTR = quoint;
-                startaddr=LOCCTR;
-                printf("\n LOCCTR value: %d\n\n",LOCCTR);
-        }
-        else{
-            LOCCTR = 0;
-             startaddr=LOCCTR;
-             printf("\n LOCCTR value: %d\n\n",LOCCTR);
-            //fputc(c,ta);
-            printf("\nGETTING ADDRESSES..\n");
-
-        }
-
-        if(1)  //check for comment
+            if(strcmp(label,"-")!=0 )
             {
-                if((strlen(col1))>=1)
-                {
-                    printf("\nSEARCHING IN SYMTAB..\n");
-                   res11=symsearch(syms,col1);
-                   if(res11==1)
-                   {
-                        printf("\nSymtab error..duplicate symbol\n");
-                        errflag=1;
-                   }
-                   else{
-                    fprintf(sym,"%d\t%s\n",LOCCTR,col1);
-                   }
 
-
-                   printf("\nSEARCHING IN OPTAB..\n");
-                   res12=symsearch(ops,col2);
-                   if(res12==1)
-                   {
-                        printf("\nGETTING ADDRESSES..\n");
-                        if(c=='\n')
-                        {
-                            //if(res12==1){
-                            //fprintf(tf, "%d\t",(LOCCTR=LOCCTR+3));}
-                           if((a=strcmp(col2,"WORD"))==0){
-                               fprintf(tf, "%d\t\t",(LOCCTR=LOCCTR+3));
-                            }
-                            else if((a=strcmp(col2,"RESW"))==0){
-                                inint=col3;
-                                LOCCTR=LOCCTR*inint;
-                                fprintf(tf, "%d\t\t",LOCCTR);
-                            }
-                            else if((a=strcmp(col2,"RESB"))==0){
-                                inint=col3;
-                                fprintf(tf, "%d\t\t",(LOCCTR=LOCCTR+inint));
-                            }
-                            else if((a=strcmp(col2,"BYTE"))==0){
-                                if((a=str(col3[0],"C"))==0)
-                                {
-                                    len11=strlen(col3)-1;
-                                }
-                                else((a=str(col3[0],"X"))==0){
-                                    len11=(strlen(col3)-1)/2;
-                                }
-                               fprintf(tf, "%d\t\t",(LOCCTR=LOCCTR+len11));
-                            }
-                            else{
-                                fprintf(tf, "%d\t\t",(LOCCTR=LOCCTR+3));
-                            }
-                        }
-
-                   }
-                   else{
-                    printf("\noptab error..invalid operation code\n");
-                        errflag=1;
-                   }
-
-
-
-
-                }//if label is present
-            }//comment cond
-
-
+                /******/printf("\nSEARCHING %s IN SYMTAB..\n",label);
+                if(symsearch(syms,label)==1){
+                   printf("\nSymtab error..duplicate symbol\n");
+                   exit(0);
+                    errflag=1;
+                }else{
+                    fprintf(sym,"%d\t%s\n",LOCCTR,label);
+                }
             }
-        else{
-        /*******/
-
-          sscanf(buf, "%s\t%s\t%s", col1, col2,col3);
-
-           printf("\nFINDING LOCCTR..\n");
-          res=strcmp(str,col2);
-          if(res==0){
-
-                quoint = contoint(col3);
-                printf("\nReturned value of addr(int) : %d",quoint);
-                printf("\nINITIALIZING LOCCTR..\n");
-                LOCCTR = quoint;
-                startaddr=LOCCTR;
-                printf("\n LOCCTR value: %d\n\n",LOCCTR);
-        }
-        else{
-            LOCCTR = 0;
-             startaddr=LOCCTR;
-             printf("\n LOCCTR value: %d\n\n",LOCCTR);
-            //fputc(c,ta);
-            printf("\nGETTING ADDRESSES..\n");
-
-        }
-
-            if(1)  //check for comment
-            {
-                if((strlen(col1))>=1)
-                {
-                    printf("\nSEARCHING IN SYMTAB..\n");
-                   res11=symsearch(syms,col1);
-                   if(res11==1)
-                   {
-                        printf("\nSymtab error..duplicate symbol\n");
-                        errflag=1;
-                   }
-                   else{
-                    fprintf(sym,"%d\t%s\n",LOCCTR,col1);
-                   }
 
 
-                   printf("\nSEARCHING IN OPTAB..\n");
-                   res12=symsearch(ops,col2);
-                   if(res12==1)
-                   {
-                        printf("\nGETTING ADDRESSES..\n");
-                        if(c=='\n')
+        /******/printf("\nSEARCHING %s IN OPTAB..\n",opcd);
+
+                if(symsearch(ops,opcd)==1){
+                  printf("GETTING ADDRESS..\n\n\n");
+
+               fputc(ch,tf);
+
+                    if(ch=='\n')
                         {
                             //if(res12==1){
                             //fprintf(tf, "%d\t",(LOCCTR=LOCCTR+3));}
-                           if((a=strcmp(col2,"WORD"))==0){
+                           if((a=strcmp(opcd,"WORD"))==0){
                                fprintf(tf, "%d\t",(LOCCTR=LOCCTR+3));
                             }
-                            else if((a=strcmp(col2,"RESW"))==0){
-                                inint=col3;
+                            else if((a=strcmp(opcd,"RESW"))==0){
+                                inint=oprd;
                                 LOCCTR=LOCCTR*inint;
                                 fprintf(tf, "%d\t",LOCCTR);
                             }
-                            else if((a=strcmp(col2,"RESB"))==0){
-                                inint=col3;
+                            else if((a=strcmp(opcd,"RESB"))==0){
+                                inint=oprd;
                                 fprintf(tf, "%d\t",(LOCCTR=LOCCTR+inint));
                             }
-                            else if((a=strcmp(col2,"BYTE"))==0){
-                                if((a=str(col3[0],"C"))==0)
+                            else if((a=strcmp(opcd,"BYTE"))==0){
+                                if((a=strcmp(oprd[0],"C"))==0)
                                 {
-                                    len11=strlen(col3)-1;
+                                    len11=(strlen(oprd)-4);
                                 }
-                                else((a=str(col3[0],"X"))==0){
-                                    len11=(strlen(col3)-1)/2;
+                                else if((strcmp(oprd[0],"X")) == 0)
+                                    {
+                                    len11=((strlen(oprd)-3)/2);
                                 }
                                fprintf(tf, "%d\t",(LOCCTR=LOCCTR+len11));
                             }
@@ -215,36 +115,24 @@ main()
                                 fprintf(tf, "%d\t",(LOCCTR=LOCCTR+3));
                             }
                         }
-
-                   }
-                   else{
+                }else{
                     printf("\noptab error..invalid operation code\n");
-                        errflag=1;
-                   }
+                    errflag=1;
+                    exit(0);
+                }
 
 
-
-
-                }//if label is present
-            }//comment cond
-
-        }
-
-        if ( fgets(buf, sizeof(buf), ff) == 0 )
-            break;
-
+         fscanf(ff,"%s\t%s\t%s",label,opcd,oprd);
+         printf("\n%s\t%s\t%s",label,opcd,oprd);
         }//while
-
-
-     }
-     }
-
-
-
+        fprintf(tf, "%d\t",(LOCCTR=LOCCTR+3));
+        programlen=LOCCTR-startaddr;
+        printf("The Program length = %d",programlen);
 
     fclose(ff);
     fclose(tf);
     fclose(op);
+    fclose(sym);
 
     disp(tar);
 

@@ -37,6 +37,9 @@
 		<Unit filename="countlen.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="display.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="initi.c">
 			<Option compilerVar="CC" />
 		</Unit>
