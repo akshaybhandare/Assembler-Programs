@@ -4,7 +4,7 @@ void disp(char tar[])
 {
     char c;
     FILE *tr = fopen(tar,"r");
-     printf("\nPrinting contents of target file\n");
+     printf("\nPrinting contents of Intermediate file\n");
 
      while((c=fgetc(tr))!=EOF)
      {

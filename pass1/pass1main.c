@@ -30,102 +30,107 @@ main()
     printf("Enter the target file name\n");
     scanf("%s",tar);
 
-    tf=fopen(tar,"a+");
+    tf=fopen(tar,"w");
 
     char buf1[100];
 
     len=countlen(sf);
 
-    //findung locctr
-    //if length is small
-     printf("\nFINDING LOCCTR..\n");
+
     fscanf(ff,"%s\t%s\t%s",label,opcd,oprd);//reading first line
+
     if((strcmp(opcd,str))==0){
         quoint = contoint(oprd);
-        printf("\nINITIALIZING LOCCTR..\n");
-        LOCCTR = quoint;
-        startaddr=LOCCTR;
-        printf("\n LOCCTR value: %d\n\n",LOCCTR);
+
+        startaddr = quoint;
+        LOCCTR=startaddr;
+
+        fprintf(tf,"\n\t%s\t%s\t%s\n",label,opcd,oprd);
+        fprintf(tf,"%X\t",LOCCTR);
+
+
     }
     else{
             LOCCTR = 0;
              startaddr=LOCCTR;
-             printf("\n LOCCTR value: %d\n\n",LOCCTR);
-            //fputc(c,ta);
 
+             fprintf(tf,"\n\t%s\t%s\t%s\n",label,opcd,oprd);
+                fprintf(tf,"%X\t",LOCCTR);
         }
+
        //reading second line
-       fscanf(ff,"%s\t%s\t%s",label,opcd,oprd);
-       printf("%s\t%s\t%s",label,opcd,oprd);
+        fscanf(ff,"%s\t%s\t%s",label,opcd,oprd);
 
-
-    fprintf(tf, "\n%d\t", LOCCTR);
-    while (strcmp(opcd,"END")!=0 && (ch=fgetc(ff))!=EOF)
+    while (strcmp(opcd,"END")!=0)
      {
 
             if(strcmp(label,"-")!=0 )
             {
 
-                /******/printf("\nSEARCHING %s IN SYMTAB..\n",label);
                 if(symsearch(syms,label)==1){
                    printf("\nSymtab error..duplicate symbol\n");
-                   exit(0);
                     errflag=1;
                 }else{
-                    fprintf(sym,"%d\t%s\n",LOCCTR,label);
+                    fprintf(sym,"%X\t%s\n",LOCCTR,label);
                 }
             }
 
+                if((a=opsearch(ops,opcd))==1 || (a=opsearch(ops,opcd))==2 ){
+                                 if(a==2){
+                                   LOCCTR=LOCCTR-3;
 
-        /******/printf("\nSEARCHING %s IN OPTAB..\n",opcd);
+                                 }
+                                  LOCCTR=LOCCTR+3;
 
-                if(symsearch(ops,opcd)==1){
-                  printf("GETTING ADDRESS..\n\n\n");
+                           if(strcmp(opcd,"WORD")==0){
 
-               fputc(ch,tf);
+                               LOCCTR=LOCCTR+3;
 
-                    if(ch=='\n')
-                        {
-                            //if(res12==1){
-                            //fprintf(tf, "%d\t",(LOCCTR=LOCCTR+3));}
-                           if((a=strcmp(opcd,"WORD"))==0){
-                               fprintf(tf, "%d\t",(LOCCTR=LOCCTR+3));
                             }
-                            else if((a=strcmp(opcd,"RESW"))==0){
-                                inint=oprd;
-                                LOCCTR=LOCCTR*inint;
-                                fprintf(tf, "%d\t",LOCCTR);
+                            else if(strcmp(opcd,"RESW")==0){
+
+
+                                inint=atoi(oprd);
+                                LOCCTR+=(3*(inint));
+
                             }
-                            else if((a=strcmp(opcd,"RESB"))==0){
-                                inint=oprd;
-                                fprintf(tf, "%d\t",(LOCCTR=LOCCTR+inint));
+                            else if(strcmp(opcd,"RESB")==0){
+                                inint=atoi(oprd);
+                               LOCCTR+=(inint);
                             }
-                            else if((a=strcmp(opcd,"BYTE"))==0){
-                                if((a=strcmp(oprd[0],"C"))==0)
+
+                            else if(strcmp(opcd,"BYTE")==0){
+                                if(oprd[0] == 'C')
                                 {
-                                    len11=(strlen(oprd)-4);
+
+                                    len11=(strlen(oprd)-3);
                                 }
-                                else if((strcmp(oprd[0],"X")) == 0)
+                                else if(oprd[0] == 'X')
                                     {
                                     len11=((strlen(oprd)-3)/2);
                                 }
-                               fprintf(tf, "%d\t",(LOCCTR=LOCCTR+len11));
+
+                              LOCCTR=LOCCTR+len11;
+
                             }
-                            else{
-                                fprintf(tf, "%d\t",(LOCCTR=LOCCTR+3));
-                            }
-                        }
+
+
                 }else{
                     printf("\noptab error..invalid operation code\n");
                     errflag=1;
-                    exit(0);
+
                 }
 
 
-         fscanf(ff,"%s\t%s\t%s",label,opcd,oprd);
-         printf("\n%s\t%s\t%s",label,opcd,oprd);
+                    fprintf(tf,"%s\t%s\t%s\n",label,opcd,oprd);
+                    fprintf(tf,"%X\t",LOCCTR);
+
+
+                    fscanf(ff,"%s\t%s\t%s",label,opcd,oprd);
+
         }//while
-        fprintf(tf, "%d\t",(LOCCTR=LOCCTR+3));
+        fprintf(tf,"%s\t%s\t%s\n",label,opcd,oprd);
+
         programlen=LOCCTR-startaddr;
         printf("The Program length = %d",programlen);
 

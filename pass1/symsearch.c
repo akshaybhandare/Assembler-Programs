@@ -33,11 +33,8 @@ int symsearch(char tar[],char labeltosch[])
      }
     if(res1==-2)
     {
-        if(strcmp(labeltosch,"WORD")==0 ||strcmp(labeltosch,"BYTE")==0 ||strcmp(labeltosch,"RESW")==0 ||strcmp(labeltosch,"RESB")==0 ){
-                    printf("String: %s may be a assembler directive\n",labeltosch);
-                    return(1);
-                }
-        printf("String: %s was not found in symtab\n",labeltosch);
+
+       // printf("String: %s was not found in symtab\n",labeltosch);
         return(0);
     }
     fclose(ff);

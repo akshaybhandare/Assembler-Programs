@@ -7,7 +7,7 @@ int opsearch(char tar[],char optosch[])
 
     FILE *ff;
      char ch;
-     int len,res=-1,res1=-2;
+     int found=-2;
     ff=fopen(tar,"r");
     if (ff == NULL)
     {
@@ -22,18 +22,21 @@ int opsearch(char tar[],char optosch[])
             break;
 
             sscanf(buf, "%s\t%s", col1, col2);
-           res=strcmp(optosch,col1);
-           if(res==0)
+
+           if(strcmp(optosch,col1)==0)
            {
-                printf("String: %s is found in optab\n",optosch);
-                res1=0;
+               // printf("String: %s is found in optab\n",optosch);
+                found=1;
                 return(1);
            }
-
-
      }
-    if(res1==-2)
+    if(found==-2)
     {
+        if(strcmp(optosch,"WORD")==0 ||strcmp(optosch,"BYTE")==0 ||strcmp(optosch,"RESW")==0 ||strcmp(optosch,"RESB")==0 ){
+                   // printf("String: %s may be a assembler directive\n",optosch);
+                    return(2);
+
+                }
         printf("String: %s was not found in optab\n",optosch);
         return(0);
     }
