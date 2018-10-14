@@ -1,0 +1,41 @@
+ ADD	18
+	24
+ COMP	28
+ 	40
+ J	3C
+ 	60
+ JEQ	30	48
+
+ JGT	34	52
+ JLT	38	56
+ JSUB	48	72 
+ LDA	00	00
+
+ STL	14 	20
+
+ LDCH	50 	80
+
+ LDL	08	08
+
+ LDX	04	04
+
+ MUL	20	32
+
+ RD	D8	216
+
+ STA	0C	12
+
+ STCH	54	84
+
+ LDB	68	10
+ STX	10	16
+
+ TD	E0	224
+
+ TIX	2C	44
+
+ WD	DC	220
+
+
+ RSUB	4C	76
+

@@ -1,0 +1,63 @@
+# depslib dependency file v1.0
+1538328267 source:g:\akshayyb - copy\pass2\pass2.c
+	<stdio.h>
+	<conio.h>
+	<string.h>
+	<stdlib.h>
+	<ctype.h>
+	"pass2.h"
+
+1538283694 source:g:\akshayyb - copy\pass2\contoint.c
+	<stdio.h>
+	"pass2.h"
+
+1538325768 g:\akshayyb - copy\pass2\pass2.h
+	<stdio.h>
+
+1538283695 source:g:\akshayyb - copy\pass2\display.c
+	<stdio.h>
+	"pass2.h"
+
+1538328003 source:g:\akshayyb - copy\pass2\opsearch.c
+	<stdio.h>
+	"pass2.h"
+
+1538326070 source:g:\akshayyb - copy\pass2\symsearch.c
+	<stdio.h>
+	"pass2.h"
+	<stdlib.h>
+
+1538283694 source:d:\assembler-programs-master\pass2\contoint.c
+	<stdio.h>
+	"pass2.h"
+
+1539503011 d:\assembler-programs-master\pass2\pass2.h
+	<stdio.h>
+
+1539503484 source:d:\assembler-programs-master\pass2\display.c
+	<stdio.h>
+	"pass2.h"
+
+1539504955 source:d:\assembler-programs-master\pass2\opsearch.c
+	<stdio.h>
+	"pass2.h"
+
+1539508036 source:d:\assembler-programs-master\pass2\pass2.c
+	<stdio.h>
+	<conio.h>
+	<string.h>
+	<stdlib.h>
+	<ctype.h>
+	"pass2.h"
+
+1539500007 source:d:\assembler-programs-master\pass2\symsearch.c
+	<stdio.h>
+	"pass2.h"
+	<stdlib.h>
+
+1539503011 source:d:\assembler-programs-master\pass2\findandreplace.c
+	"pass2.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
