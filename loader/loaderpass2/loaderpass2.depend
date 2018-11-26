@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1542566365 source:f:\5th sem\ss\programs\loader\loaderpass2\loaderpass2.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

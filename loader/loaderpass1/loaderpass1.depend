@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1542560466 source:f:\5th sem\ss\programs\loaderpass1\loaderpass1.c
+	<stdio.h>
+	<conio.h>
+	<string.h>
+	"loaderpass1/loader.h"
+
+1542558495 source:f:\5th sem\ss\programs\loaderpass1\display.c
+	<stdio.h>
+	"loaderpass1/loader.h"
+
+1542558048 f:\5th sem\ss\programs\loaderpass1\loaderpass1\loader.h
+	<stdio.h>
+
+1542595998 source:f:\5th sem\ss\programs\loader\loaderpass1\loaderpass1.c
+	<stdio.h>
+	<conio.h>
+	<string.h>
+	"loader.h"
+
+1542558048 f:\5th sem\ss\programs\loader\loaderpass1\loader.h
+	<stdio.h>
+
