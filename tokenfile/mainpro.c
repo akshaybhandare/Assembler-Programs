@@ -5,7 +5,7 @@
 #include "th.h"
 int main(){
 char ch, buffer[100];
-    FILE *fp = fopen("F:\\akshay\\tokenfile\\in.txt","r");
+    FILE *fp = fopen("in.txt","r");
     int j=0,i;
     char operators[] = "+-*/%=";
    // char fileb[20] = "in.txt";
